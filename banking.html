@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking site</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+<body>
+   <header> 
+       <h1 class="text-4xl	text-center mt-5">Father's hotel 😂😂</h1>
+       <h2 class="text-3xl	text-center mt-4">Let's get  <span class="text-purple-500"> Mooooney </span> </h2>
+</header>
+   <main class="w-3/4 mx-auto">
+    <section class=" mt-1">
+        <div class="grid grid-cols-3 g-4">
+            <div class="bg-green-500 p-10 rounded w-3/4 mx-auto mt-10">
+                 <h2 class="text-2xl">Deposit</h2>
+                 <h2 class="text-4xl text-yellow-600">$<span  id="deposit-total" >000</span></h2>
+     
+            </div>
+            <div class="bg-yellow-500 p-10 rounded w-3/4 mx-auto mt-10">
+                 <h2 class="text-2xl">Withdraw</h2>
+                 <h2 class="text-4xl text-yellow-600">$ <span id="withdraw-total">000</span></h2>
+     
+            </div>
+            <div class="bg-blue-500 p-10 rounded w-3/4 mx-auto mt-10">
+                 <h2 class="text-2xl">Balance</h2>
+                 <h2 class="text-4xl text-yellow-600">$  <span id="balance-total">000</span></h2>
+     
+            </div>
+           
+     
+     
+        </div>
+       </section>
+    
+       <section class="m-8 mt-8">
+        <div class="grid grid-cols-2  m-4">
+            <div class="bg-yellow-200 p-6 mx-4" >
+                <h1 class="text-4xl my-5">Deposit amount </h1>
+                <input id="deposit-input" type="text" value="" placeholder="write yoru deposit amount" class=" border-2 border-gray-400 rounded block mb-4 w-3/4">
+            
+            <button id="deposit-button" class="rounded bg-purple-500 p-3 text-white font-semibold">Deposit</button>
+            </div>
+            <div class="bg-yellow-400 p-6 mx-4" >
+                <h1 class="text-4xl my-5">Withdraw amount </h1>
+                <input id="Withdraw-input" type= "text" value="" placeholder="write your Withdraw amount" class=" border-2 border-gray-400 rounded block mb-4 w-3/4">
+            
+            <button id="withdraw-button" class="rounded bg-purple-500 p-3 text-white font-semibold">Withdraw</button>
+            </div>
+      
+        </div>
+       </section>
+   </main>
+
+<script>
+document.getElementById('deposit-button').addEventListener('click',function(){
+  const depositInputtext= document.getElementById('deposit-input');
+let depositAmountText =  depositInputtext.value;
+const depositAmountTotal = parseFloat(depositAmountText);
+
+
+ const depositTotal= document.getElementById('deposit-total');
+const depositTotalText =depositTotal.innerText ;
+const depositTotalAmount = parseFloat(depositTotalText);
+depositTotal.innerText = depositTotalAmount + depositAmountTotal;
+depositInputtext.value ='';
+
+// total balance
+const   balanceTotal =document.getElementById('balance-total');
+const previousBalanceText =balanceTotal.innerText;
+const previousBalanceTotal =parseFloat(previousBalanceText);
+balanceTotal.innerText =depositTotalAmount + depositAmountTotal;
+});
+
+document.getElementById('withdraw-button').addEventListener('click', function(){
+const withdrawInput = document.getElementById('Withdraw-input');
+const withdrawInputText =withdrawInput.value;
+const withdrawInputTotal =parseFloat(withdrawInputText);
+
+const withdrawTotal=document.getElementById('withdraw-total');
+const withdrawTotalText =withdrawTotal.innerText;
+const withdrawTotalAmount =parseFloat(withdrawTotalText);
+withdrawTotal.innerText= withdrawInputTotal+withdrawTotalAmount;
+
+
+const balanceTotal = document.getElementById('balance-total');
+const previousBalanceText =balanceTotal.innerText;
+const previousBalanceTotal =parseFloat(previousBalanceText);
+
+
+
+balanceTotal.innerText = previousBalanceTotal -withdrawInputTotal;
+
+withdrawInput.value = '';   
+
+    
+   
+})
+
+
+</script>
+</body>
+</html>
